@@ -16,9 +16,9 @@ In short:
 The full specification is [docs/SUBMITTING.md](https://github.com/MathCompressionBench/mcb/blob/main/docs/SUBMITTING.md) in
 the MathCompressionBench repository; this README has what you need to submit.
 
-**Open for submissions now: `toyarith-warm` only.** The lcbench-v1 tasks described in the MathCompressionBench README
-work with the tools but are not open yet; a pull request for them is refused, and `mcb intake add` refuses to
-add them. The toy task belongs to no task set, so it is checked and commented on but not ranked.
+**Open for submissions now: the seven lcbench-v1 tasks and `toyarith-warm`.** Each lcbench-v1 task (ramsey96, slt26,
+slt49, permanent2, compactness5, mathlib197 and mathlib372) is open with its `warm` and its `no_hint` package, as
+listed in the table below. The toy task belongs to no task set, so it is checked and commented on but not ranked.
 
 ## What you need
 
@@ -45,7 +45,18 @@ add them. The toy task belongs to no task set, so it is checked and commented on
   gh release download toyarith-rc.10.2 --repo MathCompressionBench/mcb    # toyarith-warm.tar.gz and its .sha256
   ```
 
-  or build it yourself in the MathCompressionBench checkout and compare its sha256 with the table below:
+  For an lcbench-v1 task, download its package and its `.sha256` file from the release `lcbench-v1-rc.10.2`, for
+  example the warm package of ramsey96:
+
+  ```sh
+  gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern 'ramsey96-warm.tar.gz*'
+  ```
+
+  The lcbench-v1 tasks import Mathlib; the MathCompressionBench README (section "The lcbench-v1 tasks: dependencies")
+  says how to provide the pinned Lake packages.
+
+  For the toy task you can also build the package yourself in the MathCompressionBench checkout and compare its sha256
+  with the table below:
 
   ```sh
   bin/mcb make-task tasks/toyarith/task_source.json --mode warm --out dist --workdir work   # dist/toyarith-warm.tar.gz
@@ -61,6 +72,20 @@ write both tables and that file from their intake's configuration, so they alway
 <!-- begin accepted-packages (written by the organizers' intake from its configuration; do not edit) -->
 | task | package sha256 | task sha256 | how to get it |
 |---|---|---|---|
+| `compactness5-no_hint` | `6a86f27a5a737415b4bb8f695dcb47de40d53ce82105fd8aaf48275d2f66fc3a` | `f8ce12207cf01afeb2009b0e41525889625597ca9ec8aabe8d890ee8b9ab6f54` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern compactness5-no_hint.tar.gz` |
+| `compactness5-warm` | `b2086e6b13963b9fa35ee7b576d51842e63aae7c11a593452404d38addd46a57` | `6ed3a88f04c6772684bfa61727207ed78de68d6937d0be5531e1e2e9775c2ef8` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern compactness5-warm.tar.gz` |
+| `mathlib197-no_hint` | `ee9cfc7bf5235c80fb851317a93fd12b792f90e431fdbf4e14cffc834e792009` | `6d7ba37f4088f58b7126c393a058dcbbefc7930b39809789436e2b65a6aca3ac` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern mathlib197-no_hint.tar.gz` |
+| `mathlib197-warm` | `13b92df3ee48cb9e15378567050916bd3f43f0b7d9044176978c90f2f426ef2c` | `e7dec6c30a07fc4761b74d8e58b6d27f0d168fbed1728110b9fcbdea78fc38b4` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern mathlib197-warm.tar.gz` |
+| `mathlib372-no_hint` | `c59f59f46746ccbc72017323e85ac346c5377e1fc1e12d3fe6abef0139e2ccf2` | `11a550a6e9a5bd2161a1287e7ab257ac42ef9aa387a0252afceb63980c3f4d7a` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern mathlib372-no_hint.tar.gz` |
+| `mathlib372-warm` | `750d328d04c52eedda84d8e9d59d18ef84b91fc75b9a559a13c0257a6297b3a0` | `cab594d34900413b4543e10fb16a24d80aed4dbbd5bde8c35928e07d5c22d783` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern mathlib372-warm.tar.gz` |
+| `permanent2-no_hint` | `8008de7c1a3063a4add315049e4cb37ac3b62f9f357cee844f41ab29ac525018` | `7698dc73104b6aabbf49663f475506c1b0acb3930a0515a11ff50fa8b92b3f0a` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern permanent2-no_hint.tar.gz` |
+| `permanent2-warm` | `09d53da44052eecd5c50a69e85c2012e6dc555e3e13dc0687b58be452e67715d` | `70c1e585454928fbf18fbb12141c20f16545f090310e05fa268529b051a37eb6` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern permanent2-warm.tar.gz` |
+| `ramsey96-no_hint` | `30cb460c2be2891c807db6ade184bd5a4b0bc2342ec0ce6077e4d0241329c69b` | `13940c7ac6ae7ac1d5bbef9c7637505c7d500bb3922825828393c4a9c2d62de4` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern ramsey96-no_hint.tar.gz` |
+| `ramsey96-warm` | `2a6154d3c7bb0004432269ce2885d940f35627ca920902a8f568663a13e267c9` | `dc0b3d60898f2a68dccc7cebdf73111bf1e690dbe4103f2614f7ab44add7bdde` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern ramsey96-warm.tar.gz` |
+| `slt26-no_hint` | `727339755f2f4ab900857dc0754f20914b134b67bed0b339e207c445c4b130b8` | `b2dbbef40b1108008f3825a4059d48a0c71fb605f27f3d6605ee24a1b098580d` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern slt26-no_hint.tar.gz` |
+| `slt26-warm` | `b0f05a7c85f65a45dfec416f886b2d5459afb0ee6de98ecbd6efc8e4e5f4ae86` | `11bf5bd976d3c7ca0420545b74555da08dd22bba7e2f1816f1c6842662de4937` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern slt26-warm.tar.gz` |
+| `slt49-no_hint` | `7d64a8f7a11b8374eaaff82570980a44aee3652729a57cb114814ff6b71b0062` | `9988508564088e7108dafa5c468a929bcdfd849981401bfe24f4af16d0660f70` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern slt49-no_hint.tar.gz` |
+| `slt49-warm` | `99d632d51dfd2a55e3af6535e607354733ffd434fdb01f7c98f24960122dd09b` | `adeb810e897574d5e6ceb6c4bfb9db169ab3cb00d01c6a5721a7180a43385f85` | `gh release download lcbench-v1-rc.10.2 --repo MathCompressionBench/mcb --pattern slt49-warm.tar.gz` |
 | `toyarith-warm` | `f381a2302711091efa5c51d55b8bdfb157c2b9ad5e87481989ae76b2d5d583b1` | `a58f2689c2ca3c29c83ec39578b5d29ec39e8e1f02e1ab2bcdcb7ebd8b2c56a1` | `gh release download toyarith-rc.10.2 --repo MathCompressionBench/mcb` |
 <!-- end accepted-packages -->
 
@@ -199,7 +224,7 @@ read as a small part of YAML, and anything outside it is refused with its line n
 
    ```sh
    gh repo clone MathCompressionBench/mcb-submissions      # or: git clone git@github.com:MathCompressionBench/mcb-submissions.git
-   git -C lcbench-submissions switch -c my-submission
+   git -C mcb-submissions switch -c my-submission
    ```
 
    Then, in the MathCompressionBench checkout, add each bundle under your entry name:
