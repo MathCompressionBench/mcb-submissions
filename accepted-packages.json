@@ -1,0 +1,13 @@
+{
+ "schema": "lcbench.accepted_packages.v1",
+ "tasks": {
+  "toyarith-warm": [
+   {
+    "package_sha256": "f381a2302711091efa5c51d55b8bdfb157c2b9ad5e87481989ae76b2d5d583b1",
+    "task_sha256": "a58f2689c2ca3c29c83ec39578b5d29ec39e8e1f02e1ab2bcdcb7ebd8b2c56a1",
+    "get": "gh release download toyarith-rc.10.2 --repo MathCompressionBench/mcb"
+   }
+  ]
+ },
+ "retired": {}
+}
