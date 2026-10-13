@@ -233,7 +233,7 @@ class SubmissionBranch(unittest.TestCase):
         self.add(bundle=make_bundle("not an agent run", track="record", budget=3600))
         got = "\n".join(self.problems())
         self.assertIn("at most 3600 seconds per run", got)
-        self.assertIn("lcbench start --track agent", got)
+        self.assertIn("mcb start --track agent", got)
 
     def test_human_help_is_open_track_only(self):
         self.entry(METADATA.replace("track: open", "track: agent-120").replace("human_assisted: false",

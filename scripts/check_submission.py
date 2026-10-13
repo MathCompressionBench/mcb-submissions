@@ -231,7 +231,7 @@ def check(repo: Path, base: str) -> list[str]:
                 problems += [f"{sid}: {p}" for p in metadata_problems(meta, task, sid)]
                 if pr_entry is not None and isinstance(meta, dict) and meta.get("entry") != pr_entry["name"]:
                     problems.append(f"{sid}: metadata entry is {meta.get('entry')!r}; it must name this pull "
-                                    f"request's entry {pr_entry['name']!r} (lcbench intake add ... --entry "
+                                    f"request's entry {pr_entry['name']!r} (mcb intake add ... --entry "
                                     f"{pr_entry['name']})")
             except ValueError as e:
                 problems.append(f"{sid}: the metadata file is not JSON ({e})")

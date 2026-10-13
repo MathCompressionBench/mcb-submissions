@@ -247,14 +247,36 @@ read as a small part of YAML, and anything outside it is refused with its line n
    On a Mac, or on Linux without the sandbox, it says `unverified`. That is expected: only the organizers' run
    can be verified.
 
-6. **Add your files.** Clone this repository (or your fork of it) and make a new branch:
+6. **Fork this repository** on GitHub: the "Fork" button on its page, or
+   `gh repo fork MathCompressionBench/mcb-submissions --clone=false`. You push to your fork; this repository takes
+   only pull requests.
+
+7. **Clone your fork** over https and add this repository as `upstream`:
 
    ```sh
-   git clone https://github.com/MathCompressionBench/mcb-submissions.git      # or: gh repo clone MathCompressionBench/mcb-submissions
-   git -C mcb-submissions switch -c my-submission
+   git clone https://github.com/<your account>/mcb-submissions.git
+   cd mcb-submissions
+   git remote add upstream https://github.com/MathCompressionBench/mcb-submissions.git
    ```
 
-   Then, in the MathCompressionBench checkout, add each bundle under your entry name:
+8. **Sync your fork with `upstream`, then make a branch**, before every submission. The organizers add newly
+   accepted packages to `accepted-packages.json` on `main`. `mcb intake add` (step 9) reads that file in your clone
+   and `scripts/check_submission.py` (step 11) reads it on your fork's `main` (`origin/main`), so with a stale fork
+   both refuse bundles made from the newly accepted packages.
+
+   ```sh
+   git switch main
+   git fetch upstream
+   git merge --ff-only upstream/main
+   git push origin main
+   git switch -c my-submission
+   ```
+
+   The "Sync fork" button on your fork's GitHub page, or `gh repo sync <your account>/mcb-submissions`, syncs the
+   fork on GitHub; then run `git switch main && git pull` in your clone. If you made your branch before syncing,
+   run `git merge upstream/main` on it.
+
+9. **Add your bundles.** In the MathCompressionBench checkout, add each bundle under your entry name:
 
    ```sh
    bin/mcb intake add <this repository's checkout> <task> <bundle> --participant "<your name or team>" \
@@ -284,25 +306,35 @@ read as a small part of YAML, and anything outside it is refused with its line n
    `claimed` holds the score you report, as printed by `./check` (an integer), and `track` the track the bundle
    records (`null` for a workspace started without `--track`).
 
-7. **Write the metadata.** Copy `templates/metadata.yaml` to `entries/<entry>/metadata.yaml`, fill it in, and check
-   it (from the MathCompressionBench checkout, or with plain Python from this checkout):
+10. **Write the metadata.** Copy `templates/metadata.yaml` to `entries/<entry>/metadata.yaml`, fill it in, and check
+    it (from the MathCompressionBench checkout, or with plain Python from this checkout):
 
-   ```sh
-   bin/mcb submission validate <this repository's checkout>/entries/<entry>
-   python3 scripts/submission_meta.py validate entries/<entry>
-   ```
+    ```sh
+    bin/mcb submission validate <this repository's checkout>/entries/<entry>
+    python3 scripts/submission_meta.py validate entries/<entry>
+    ```
 
-8. **Check the pull request before you open it.** Commit the files, then run
+11. **Check the pull request before you open it.** Commit the files, then run
 
-   ```sh
-   python3 scripts/check_submission.py
-   ```
+    ```sh
+    python3 scripts/check_submission.py
+    ```
 
-   It applies the same rules the organizers apply (below) to your branch, compared with `main`, including the
-   accepted packages and the metadata, and says what to fix. It needs only Python 3 and git.
+    It applies the same rules the organizers apply (below) to your branch, compared with your fork's `main`
+    (`origin/main`, synced in step 8), including the accepted packages and the metadata, and says what to fix. It
+    needs only Python 3 and git.
 
-9. **Open a pull request** to `main` of this repository and fill in its template. You do not need to do anything
-   else unless an organizer asks.
+12. **Push and open the pull request.** Push the branch to your fork:
+
+    ```sh
+    git push -u origin my-submission
+    ```
+
+    Then open the pull request against `main` of MathCompressionBench/mcb-submissions and fill in its template:
+    GitHub offers it after the push, or run `gh pr create --repo MathCompressionBench/mcb-submissions --base main`.
+    One pull request may add up to five bundles, for one or more tasks. You do not need to do anything else unless
+    an organizer asks. The organizers' check posts one comment, **lcbench check status**, and edits that comment in
+    place as the status changes (below).
 
 ## Rules for the pull request
 
