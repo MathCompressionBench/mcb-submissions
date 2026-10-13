@@ -1,0 +1,2 @@
+lcbench intake: REFUSED
+- README.md: only entries/<entry>/metadata.yaml and submissions/<task>/<64-hex id>.tar.gz, .json and .receipt.json may be added
