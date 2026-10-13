@@ -336,3 +336,5 @@ and on an agent track only those whose receipt records an agent run within the t
 
 Open an issue in this repository, MathCompressionBench/mcb-submissions:
 https://github.com/MathCompressionBench/mcb-submissions/issues.
+
+This line was added by a test pull request that the organizers check must refuse.
