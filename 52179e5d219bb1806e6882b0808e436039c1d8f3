@@ -1,2 +1,2 @@
-lcbench intake: received and accepted for checking
-- ramsey96-warm/24562666a79fb5799e6082fbf243803bd572011c111ac0885293411dfef6919c: self-reported (441,840 nodes) (being checked now)
+lcbench intake: checked: verified
+- ramsey96-warm/24562666a79fb5799e6082fbf243803bd572011c111ac0885293411dfef6919c: verified (441,840 nodes; baseline 11,338,478) (the verified receipt matches the self-report)
