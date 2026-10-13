@@ -1,0 +1,11 @@
+{
+ "claimed": {
+  "expr_nodes_with_levels_v1": 17367
+ },
+ "entry": "richardxu6-toy-2026-10-13",
+ "participant": "richardxu6",
+ "schema": "lcbench.intake_submission.v1",
+ "submission_id": "dd6e7e91e5d5ba1d85294af1539f1522a737ced27429318bb21a8404871ebeba",
+ "task": "toyarith-warm",
+ "track": null
+}
