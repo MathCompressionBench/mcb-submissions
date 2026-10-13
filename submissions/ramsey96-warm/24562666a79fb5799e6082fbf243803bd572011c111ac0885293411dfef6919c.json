@@ -1,0 +1,11 @@
+{
+ "claimed": {
+  "expr_nodes_with_levels_v1": 441840
+ },
+ "entry": "richardxu6-ramsey96-2026-10-13",
+ "participant": "richardxu6",
+ "schema": "lcbench.intake_submission.v1",
+ "submission_id": "24562666a79fb5799e6082fbf243803bd572011c111ac0885293411dfef6919c",
+ "task": "ramsey96-warm",
+ "track": null
+}
